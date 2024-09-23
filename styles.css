@@ -1,0 +1,56 @@
+// Cálculo de Interés Simple
+function calcularInteresSimple() {
+    let capital = parseFloat(document.getElementById('capitalSimple').value);
+    let tasa = parseFloat(document.getElementById('tasaSimple').value) / 100;
+    let tiempo = parseFloat(document.getElementById('tiempoSimple').value);
+
+    if (!isNaN(capital) && !isNaN(tasa) && !isNaN(tiempo)) {
+        let interes = capital * tasa * tiempo;
+        document.getElementById('resultadoInteresSimple').innerText = interes.toFixed(2);
+    } else {
+        alert("Por favor, ingresa todos los valores correctamente.");
+    }
+}
+
+// Cálculo de Interés Compuesto
+function calcularInteresCompuesto() {
+    let capital = parseFloat(document.getElementById('capitalCompuesto').value);
+    let tasa = parseFloat(document.getElementById('tasaCompuesto').value) / 100;
+    let tiempo = parseFloat(document.getElementById('tiempoCompuesto').value);
+    let periodos = parseFloat(document.getElementById('periodosCompuesto').value);
+
+    if (!isNaN(capital) && !isNaN(tasa) && !isNaN(tiempo) && !isNaN(periodos)) {
+        let montoFinal = capital * Math.pow((1 + tasa / periodos), periodos * tiempo);
+        document.getElementById('resultadoInteresCompuesto').innerText = montoFinal.toFixed(2);
+    } else {
+        alert("Por favor, ingresa todos los valores correctamente.");
+    }
+}
+
+// Cálculo de ROI
+function calcularROI() {
+    let beneficio = parseFloat(document.getElementById('beneficio').value);
+    let inversion = parseFloat(document.getElementById('inversion').value);
+
+    if (!isNaN(beneficio) && !isNaN(inversion)) {
+        let roi = ((beneficio - inversion) / inversion) * 100;
+        document.getElementById('resultadoROI').innerText = roi.toFixed(2) + "%";
+    } else {
+        alert("Por favor, ingresa todos los valores correctamente.");
+    }
+}
+
+// Cálculo de Amortización de Préstamos
+function calcularAmortizacion() {
+    let capital = parseFloat(document.getElementById('capitalPrestamo').value);
+    let tasa = parseFloat(document.getElementById('tasaPrestamo').value) / 100;
+    let plazo = parseFloat(document.getElementById('plazoPrestamo').value);
+
+    if (!isNaN(capital) && !isNaN(tasa) && !isNaN(plazo)) {
+        let tasaMensual = tasa / 12;
+        let cuotaMensual = (capital * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -plazo));
+        document.getElementById('resultadoAmortizacion').innerText = cuotaMensual.toFixed(2);
+    } else {
+        alert("Por favor, ingresa todos los valores correctamente.");
+    }
+}
